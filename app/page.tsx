@@ -65,7 +65,6 @@ export default function Pokedex() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {pokemons.map((pokemon) => (
                     <button key={pokemon.name} onClick={() => {
-                        console.log("Click on:", pokemon.name);
                         setSelectedPokemonName(pokemon.name);
                     }} className="text-left">
                         <PokemonCard
