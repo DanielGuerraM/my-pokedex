@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useGenerations } from "@/hooks/useGenerations";
 import { usePokemons } from "@/hooks/usePokemons";
 import PokemonCard from "@/components/PokemonCard";
+import PokemonModal from "@/components/PokemonModal";
 
 
 export default function Pokedex() {
@@ -19,6 +20,7 @@ export default function Pokedex() {
         }
 
     const [selectedGenId, setSelectedGenId] = useState<keyof typeof GENERATIOS>("generation-i");
+    const [selectedPokemonName, setSelectedPokemonName] = useState<string | null>(null);
     const currentConfig = GENERATIOS[selectedGenId];
     const { data: pokemons, loading: loadingPokemons, error: pokemonsError } = usePokemons(currentConfig.limit, currentConfig.offset);
     const { data: generations, loading: loadingGenerations, error: generationsError } = useGenerations();
@@ -62,13 +64,23 @@ export default function Pokedex() {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {pokemons.map((pokemon) => (
-                    <PokemonCard
-                        key={pokemon.name}
-                        name={pokemon.name}
-                        url={pokemon.url}
-                    />
+                    <button key={pokemon.name} onClick={() => {
+                        console.log("Click on:", pokemon.name);
+                        setSelectedPokemonName(pokemon.name);
+                    }} className="text-left">
+                        <PokemonCard
+                            key={pokemon.name}
+                            name={pokemon.name}
+                            url={pokemon.url}
+                        />
+                    </button>
                 ))}
             </div>
+
+            <PokemonModal 
+                pokemonName={selectedPokemonName}
+                onClose={() => setSelectedPokemonName(null)}
+            />
         </main>
     );
 }
