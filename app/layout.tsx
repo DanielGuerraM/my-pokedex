@@ -30,7 +30,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <TeamProvider>
-            {children}
+            <div className="pb-32">
+                {children}
+            </div>
             <TeamBar />
         </TeamProvider>
       </body>
