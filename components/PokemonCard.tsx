@@ -10,7 +10,7 @@ export default function PokemonCard({ name, url }: PokemonCardProps) {
     return (     
         <div
             key={id}
-            className="bg-slate-800 p-4 rounded-xl border border-slate-700 hover:border-yellow-400 transition-all cursor-pointer capitalize text-center"
+            className="bg-slate-800 p-4 rounded-xl border border-slate-700 hover:border-slate-500 transition-all cursor-pointer capitalize text-center"
         >
             <p className="font-semibold">{name}</p>
             <img

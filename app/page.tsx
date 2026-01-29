@@ -48,7 +48,7 @@ export default function Pokedex() {
                 </label>
                 <select
                     value={selectedGenId}
-                    className="w-full p-3 bg-slate-800 border border-slate-700 rounded-xl text-white appearance-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent outline-none cursor-pointer transition-all hover:bg-slate-750"
+                    className="w-full p-3 bg-slate-800 border border-slate-700 rounded-xl text-white appearance-none focus:ring-2 focus:ring-slate-500 focus:border-transparent outline-none cursor-pointer transition-all hover:bg-slate-750 hover:border-slate-500"
                     onChange={handleGenerationChange}
                 >
                     {generations.map((gen) => (
