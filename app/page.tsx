@@ -64,7 +64,7 @@ export default function Pokedex() {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {pokemons.map((pokemon) => (
-                    <button key={pokemon.name} onClick={() => {
+                    <div key={pokemon.name} onClick={() => {
                         setSelectedPokemonName(pokemon.name);
                     }} className="text-left">
                         <PokemonCard
@@ -72,7 +72,7 @@ export default function Pokedex() {
                             name={pokemon.name}
                             url={pokemon.url}
                         />
-                    </button>
+                    </div>
                 ))}
             </div>
 

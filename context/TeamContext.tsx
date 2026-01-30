@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useState, useContext, ReactNode } from "react";
+import { createContext, useState, useContext, ReactNode, useEffect } from "react";
 
 interface TeamContextType {
     team: any[];
@@ -12,6 +12,23 @@ const TeamContext = createContext<TeamContextType | undefined>(undefined);
 
 export function TeamProvider({ children }: { children: ReactNode }) {
     const [team, setTeam] = useState<any[]>([]);
+
+    useEffect(() => {
+        const savedTeam = localStorage.getItem('pokemon-team');
+        if(savedTeam) {
+            try {
+                setTeam(JSON.parse(savedTeam))
+            } catch (error) {
+                console.error('Error al cargar el equipo del localStorage', error);
+            }
+        }
+    }, []);
+
+    useEffect(() => {
+        if (team.length > 0 || localStorage.getItem('pokemon-team')) {
+        localStorage.setItem('pokemon-team', JSON.stringify(team));
+        }
+    }, [team]);
 
     const addToTeam = (pokemon: any) => {
         if(team.length < 6 && !team.find(p => p.name === pokemon.name)) {
@@ -26,7 +43,7 @@ export function TeamProvider({ children }: { children: ReactNode }) {
     };
 
     return (
-        <TeamContext.Provider value={{ team, addToTeam, removeFromTeam}}>
+        <TeamContext.Provider value={{ team, addToTeam, removeFromTeam }}>
             {children}
         </TeamContext.Provider>
     )

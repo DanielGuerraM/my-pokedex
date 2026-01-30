@@ -33,7 +33,7 @@ export default function TeamBar() {
                                         />
                                         <button
                                             onClick={() => removeFromTeam(pokemon.name)}
-                                            className="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 rounded-full w-5 h-5 text-[10px] flex items-center justify-center border border-white"
+                                            className="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 rounded-full w-5 h-5 text-[10px] flex items-center justify-center border border-white cursor-pointer"
                                         >
                                             ✕
                                         </button>

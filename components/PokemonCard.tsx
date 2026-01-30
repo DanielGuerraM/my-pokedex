@@ -34,7 +34,7 @@ export default function PokemonCard({ name, url }: PokemonCardProps) {
                 className={`mt-3 w-full py-2 rounded-lg font-bold text-xs transition-colors ${
                     isAlreadyInTeam 
                     ? 'bg-slate-700 text-slate-500 cursor-not-allowed' 
-                    : 'bg-yellow-500 hover:bg-yellow-400 text-slate-900'
+                    : 'bg-yellow-500 hover:bg-yellow-400 text-slate-900 cursor-pointer'
                 }`}
             >
                 {isAlreadyInTeam ? 'ON THE TEAM' : 'ADD TO TEAM'}
